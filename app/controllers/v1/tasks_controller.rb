@@ -5,12 +5,21 @@ module V1
     def index
       # render json: Task.all
       tasks = Task.all
-      render json: {
-        data: ActiveModelSerializers::SerializableResource.new(tasks, each_serializer: TasksSerializer),
-        message: ['Tasks list fetched successfully'],
-        status: 200,
-        type: 'Success'
-      }
+      if tasks.length > 0
+        render json: {
+          data: ActiveModelSerializers::SerializableResource.new(tasks, each_serializer: TasksSerializer),
+          message: ['Tasks list fetched successfully'],
+          status: 200,
+          type: 'Success'
+        }
+      else
+        render json: {
+          # data: ActiveModelSerializers::SerializableResource.new(tasks, each_serializer: TasksSerializer),
+          message: ['No tasks found'],
+          status: 404,
+          type: 'Error'
+        }
+      end
     end
   
     def show
@@ -48,7 +57,7 @@ module V1
     end
   
     def task_params
-      params.require(:task).permit(:name)
+      params.permit(:id, :name)
     end
   end
 end
