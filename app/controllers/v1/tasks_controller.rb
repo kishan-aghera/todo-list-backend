@@ -15,7 +15,7 @@ module V1
       else
         render json: {
           # data: ActiveModelSerializers::SerializableResource.new(tasks, each_serializer: TasksSerializer),
-          message: ['No tasks found'],
+          error: ['No tasks found'],
           status: 404,
           type: 'Error'
         }
@@ -39,9 +39,21 @@ module V1
   
     def update
       if @task.update(task_params)
-        render json: @task, status: 200
+        # render json: @task, status: 200
+        render json: {
+          data: ActiveModelSerializers::SerializableResource.new(@task, serializer: TasksSerializer),
+          message: ['Task updated successfully'],
+          status: 200,
+          type: 'Success'
+        }
       else
-        render json: { error: @task.errors }, status: 422
+        # render json: { error: @task.errors }, status: 422
+        render json: {
+          # data: ActiveModelSerializers::SerializableResource.new(tasks, each_serializer: TasksSerializer),
+          error: [@task.errors], #'Task updating failed'
+          status: 422,
+          type: 'Error'
+        }
       end
     end
   
@@ -57,7 +69,8 @@ module V1
     end
   
     def task_params
-      params.permit(:id, :name)
+      params.permit(:id, :name) # For Postman, use this line. It will also work for frontend, but a warning will come.
+      # params.require(:task).permit(:id, :name) # For API through frontend apps, use this line
     end
   end
 end
