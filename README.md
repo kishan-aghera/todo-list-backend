@@ -28,4 +28,4 @@ To start the server on localhost run the command below. The server will start on
 $ rails s
 ```
 
-*Note*: The server for this app will not generate any view as it works as an API. You need to clone and use this [app](https://github.com/kishan-aghera/todo-list-frontend) for view.
+*Note*: The server for this app will not generate any view as it works as an API. You need to clone and use this [app](https://kishan-aghera.github.io/todo-list-frontend/) for view.
