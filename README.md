@@ -1,6 +1,6 @@
 # To-Do List Rails API Backend
 
-This project is part of a mini-project assigned to learn React + Rails. This project works as an API for the React frontend project in the repository [here](https://github.com/kishan-aghera/todo-list-frontend). The API will be used for user authentication and CRUD operation.
+This project is part of a mini-project assigned to learn React + Rails. This project works as an API for the React frontend project in the repository [here](https://github.com/kishan-aghera/todo-list-frontend). The API will be used for user authentication and CRUD operation. This API is currently deployed [here](https://todo-list-rails-api.herokuapp.com/). Please feel free to contribute to this project.
 
 ### Project Configuration
 
